@@ -26,7 +26,7 @@ install-app: install-deps
 	@echo "Moving $(APP_NAME) to $(INSTALL_DIR)..."
 	mkdir -p $(INSTALL_DIR)
 	mv /tmp/$(APP_NAME)/* $(INSTALL_DIR)
-	chmod +x $(INSTALL_DIR)/run.sh
+	chmod +x $(INSTALL_DIR)run.sh
 	rm -rf /tmp/$(APP_NAME)
 	env AVP=$(INSTALL_DIR)
 
