@@ -60,6 +60,7 @@ update:
 		echo "Updating $(APP_NAME)..."; \
 		cd $(INSTALL_DIR); \
 		git pull; \
+		sudo systemctl restart $(APP_NAME).service; \
 	else \
 		echo "$(APP_NAME) is not installed. Run 'make install' first."; \
 	fi
