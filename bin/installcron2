@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+
+crontab -l | sed 'g/purge/d' > /tmp/junk 2> /dev/null
+
+echo "0 1 * * *	/hunter/Software/bin/logpurge" >> /tmp/junk
+echo "30 1 * * *	/hunter/Software/bin/alarmpurge" >> /tmp/junk
+
+crontab /tmp/junk

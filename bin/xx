@@ -1,0 +1,16 @@
+#!/bin/sh
+
+EDITOR=ed; export EDITOR
+
+crontab -e <<!EOF!
+g/purge/d
+!EOF!
+
+crontab -e <<!EOF!
+a
+0 1 * * *	/hunter/Software/bin/logpurge
+30 1 * * *	/hunter/Software/bin/alarmpurge
+.
+w
+q
+!EOF!

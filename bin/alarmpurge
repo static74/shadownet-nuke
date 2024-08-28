@@ -1,0 +1,20 @@
+#!/bin/sh
+DIR=/hunter
+#DAYS=30
+DAYS=${1:-45}
+
+rm -f /tmp/alarmpurge.log
+(
+    #
+    # ALARMS
+    #
+    find ${DIR}/Alarms -name "*.jpg" -mtime +${DAYS} -print
+    find ${DIR}/Alarms -name "*.xml" -mtime +${DAYS} -print
+
+
+) | tee /tmp/alarmpurge.log | sed -e 's/.*/"&"/' | xargs rm
+
+#
+# Delete empty directories (because of the above purge)
+#
+find ${DIR}/Alarms -type d -empty -print | tee -a /tmp/alarmpurge.log | sed -e 's/.*/"&"/' | xargs rmdir

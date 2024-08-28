@@ -1,0 +1,13 @@
+#!/bin/sh
+DIR=/hunter
+#DAYS=30
+DAYS=${1:-45}
+
+rm -f /tmp/logpurge.log
+(
+    #
+    # LOG FILES
+    #
+    find ${DIR}/Software -name "*.gz" -mtime ${DAYS} -print
+
+) | tee /tmp/logpurge.log | sed -e 's/.*/"&"/' | xargs rm
