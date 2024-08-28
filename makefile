@@ -67,9 +67,10 @@ update:
 	@if [ -d "$(INSTALL_DIR)" ]; then \
 		echo "Updating $(APP_NAME)..."; \
 		git pull https://github.com/static74/$(APP_NAME).git; \
+		sudo systemctl stop $(APP_NAME).service; \
 		cp -R * $(INSTALL_DIR); \
 		rm $(INSTALL_DIR)/makefile $(INSTALL_DIR)/readme.txt;\
-		sudo systemctl restart $(APP_NAME).service; \
+		sudo systemctl start $(APP_NAME).service; \
 	else \
 		echo "$(APP_NAME) is not installed. Run 'make install' first."; \
 	fi
