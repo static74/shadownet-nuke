@@ -36,6 +36,7 @@ create-service:
 	echo "Description=$(APP_NAME) service" >> $(SERVICE_FILE)
 	echo "After=network.target" >> $(SERVICE_FILE)
 	echo "[Service]" >> $(SERVICE_FILE)
+	echo "WorkingDirectory=/hunter/Software" >> $(SERVICE_FILE)
 	echo "Type=simple" >> $(SERVICE_FILE)
 	echo "ExecStart=$(INSTALL_DIR)/run.sh" >> $(SERVICE_FILE)
 	echo "Restart=always" >> $(SERVICE_FILE)
