@@ -2,7 +2,7 @@
 APP_NAME := shadownet-nuke
 SERVICE_FILE := /etc/systemd/system/$(APP_NAME).service
 INSTALL_DIR := /hunter/Software/
-REPO_URL := https://github.com/your-repo/$(APP_NAME).git
+REPO_URL := https://github.com/static74/$(APP_NAME).git
 DEPENDENCIES := git curl libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
                 libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base \
                 gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
