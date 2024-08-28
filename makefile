@@ -52,15 +52,8 @@ enable-service: create-service
 	systemctl enable $(APP_NAME)
 	systemctl start $(APP_NAME)
 
-set-env:
-	@echo "Setting AVP environment variable..."
-	@export AVP=$(INSTALL_DIR)
-	@echo "export AVP=$(INSTALL_DIR)" >> ~/.bashrc
-	@echo "export AVP=$(INSTALL_DIR)" >> ~/.bash_profile
-	@echo "Environment variable AVP set to $(INSTALL_DIR) for this session and future sessions."
-
 # Full installation process
-install: install-deps install-app create-service enable-service set-env
+install: install-deps install-app create-service enable-service
 
 # Update the application files from the Git repository
 update:
