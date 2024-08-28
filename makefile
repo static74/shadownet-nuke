@@ -28,6 +28,7 @@ install-app: install-deps
 	mv /tmp/$(APP_NAME)/* $(INSTALL_DIR)
 	chmod +x $(INSTALL_DIR)/run.sh
 	rm -rf /tmp/$(APP_NAME)
+	env AVP=$(INSTALL_DIR)
 
 # Create the service file
 create-service:
@@ -36,7 +37,7 @@ create-service:
 	echo "Description=$(APP_NAME) service" >> $(SERVICE_FILE)
 	echo "After=network.target" >> $(SERVICE_FILE)
 	echo "[Service]" >> $(SERVICE_FILE)
-	echo "WorkingDirectory=/hunter/Software" >> $(SERVICE_FILE)
+	echo "WorkingDirectory=$(INSTALL_DIR) >> $(SERVICE_FILE)
 	echo "Type=simple" >> $(SERVICE_FILE)
 	echo "ExecStart=$(INSTALL_DIR)/run.sh" >> $(SERVICE_FILE)
 	echo "Restart=always" >> $(SERVICE_FILE)
@@ -51,8 +52,15 @@ enable-service: create-service
 	systemctl enable $(APP_NAME)
 	systemctl start $(APP_NAME)
 
+set-env:
+	@echo "Setting AVP environment variable..."
+	@export AVP=$(INSTALL_DIR)
+	@echo "export AVP=$(INSTALL_DIR)" >> ~/.bashrc
+	@echo "export AVP=$(INSTALL_DIR)" >> ~/.bash_profile
+	@echo "Environment variable AVP set to $(INSTALL_DIR) for this session and future sessions."
+
 # Full installation process
-install: install-deps install-app create-service enable-service 
+install: install-deps install-app create-service enable-service set-env
 
 # Update the application files from the Git repository
 update:
