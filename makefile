@@ -37,7 +37,7 @@ create-service:
 	echo "Description=$(APP_NAME) service" >> $(SERVICE_FILE)
 	echo "After=network.target" >> $(SERVICE_FILE)
 	echo "[Service]" >> $(SERVICE_FILE)
-	echo "WorkingDirectory=$(INSTALL_DIR) >> $(SERVICE_FILE)
+	echo "WorkingDirectory=$(INSTALL_DIR)" >> $(SERVICE_FILE)
 	echo "Type=simple" >> $(SERVICE_FILE)
 	echo "ExecStart=$(INSTALL_DIR)/run.sh" >> $(SERVICE_FILE)
 	echo "Restart=always" >> $(SERVICE_FILE)
@@ -69,7 +69,7 @@ update:
 		git pull https://github.com/static74/$(APP_NAME).git; \
 		sudo systemctl stop $(APP_NAME).service; \
 		cp -R * $(INSTALL_DIR); \
-		rm $(INSTALL_DIR)/makefile $(INSTALL_DIR)/readme.txt;\
+		rm $(INSTALL_DIR)/makefile $(INSTALL_DIR)/readme.txt; \
 		sudo systemctl start $(APP_NAME).service; \
 	else \
 		echo "$(APP_NAME) is not installed. Run 'make install' first."; \
