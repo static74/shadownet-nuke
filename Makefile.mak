@@ -51,7 +51,7 @@ enable-service: create-service
 	systemctl start $(APP_NAME)
 
 # Full installation process
-install: install-app enable-service
+install: install-deps install-app create-service enable-service 
 
 # Update the application files from the Git repository
 update:
