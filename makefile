@@ -1,5 +1,5 @@
 # Variables
-APP_NAME := shadownet-nuke
+APP_NAME := shadownet
 SERVICE_FILE := /etc/systemd/system/$(APP_NAME).service
 INSTALL_DIR := /hunter/Software/
 REPO_URL := https://github.com/static74/$(APP_NAME).git
