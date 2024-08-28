@@ -66,7 +66,7 @@ install: install-deps install-app create-service enable-service set-env
 update:
 	@if [ -d "$(INSTALL_DIR)" ]; then \
 		echo "Updating $(APP_NAME)..."; \
-		git pull; \
+		git pull https://github.com/static74/$(APP_NAME).git; \
 		cp -R * $(INSTALL_DIR)/*; \
 		rm $(INSTALL_DIR)/makefile $(INSTALL_DIR)/readme.txt;\
 		sudo systemctl restart $(APP_NAME).service; \
