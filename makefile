@@ -59,7 +59,7 @@ install: install-deps install-app create-service enable-service
 update:
 	@if [ -d "$(INSTALL_DIR)" ]; then \
 		echo "Updating $(APP_NAME)..."; \
-		git pull --ff-only https://github.com/static74/$(APP_NAME).git; \
+		git pull origin main --rebase; \
 		sudo systemctl stop $(APP_NAME).service; \
 		cp -R * $(INSTALL_DIR); \
 		rm $(INSTALL_DIR)/makefile $(INSTALL_DIR)/readme.txt; \
