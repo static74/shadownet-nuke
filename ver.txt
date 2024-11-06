@@ -1,1 +1,3 @@
-rev3 8.28.24 @ 14:09
+build dir - rev1 10/31/24
+shadownet ver - 2.6.8
+alpine linux
